@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QISTINA'S RESUME</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/d623ae1566.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="banner">
+    <div class="navbar">
+        <img src="image/logo.png" class="logo" alt="logo">
+        <ul id="sidemenu">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="education.html">EDUCATION</a></li>
+            <li><a href="skills.html">SKILLS</a></li>
+            <li><a href="extra-curriculum.html">EXTRA-CURRICULUM</a></li>
+            <li><a href="about.html">ABOUT ME</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+         </ul>
+    </div>
+<!-- contact -->
+<div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="sub-title">Contact Me</h1>
+                <p><i class="fa-solid fa-paper-plane"></i>qistinaroslan012@gmail.com</p>
+                <p><i class="fa-sharp fa-solid fa-square-phone"></i>+60 177750306</p>
+                <div class="social-icons">
+                    <a href="https://facebook.com/qis.roslan.5"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/qisroslan/?igshid=MzRlODBiNWFlZA%3D%3D"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="contact-right">
+                <form name="submit-to-google-sheet">
+
+                    <input type="text" name="Name" placeholder="Your name" required>
+                    <input type="email" name="Email" placeholder="Your Email" required>
+                    <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                    <button type="submit" class="btn btn2" style="font-size: 20px;">Submit</button>
+                </form>
+                <div id="msg"></div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p> © 2023 NUR QISTINA ROSLAN.<br>
+            This website are for the purpose of assignment on HTML only.<br>
+            Recommended browser Google Chrome. Resolution 1366 X 768. Last update June 11, 2022</p>
+    </div>
+</div>
+</div>
+
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzPahex_Fd6R-bXFGyTTQMoW9u0lHTjvwtHkK_cbQgPfssD_8BJQz2snUQnF2CV48VwDQ/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById("msg")
+
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML = "Message sent successfully"
+            setTimeout(function(){
+                msg.innerHTML = ""
+            },5000)
+            form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+
+</body>
+</html>
